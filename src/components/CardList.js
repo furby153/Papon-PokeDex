@@ -11,6 +11,7 @@ const CardList = ( { pokemons } ) => {
                             key={pokemons[i].id} 
                             id={pokemons[i].id} 
                             name={pokemons[i].name} 
+                            url={pokemons[i].url}
                             height={pokemons[i].height}
                             weight={pokemons[i].weight}
                         />

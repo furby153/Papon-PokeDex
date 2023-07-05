@@ -18,6 +18,10 @@ class App extends React.Component {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => this.setState({ pokemons: users }))
+
+        // this.state.pokemons.forEach(((item, i) => {
+        //     item.id = i + 1;
+        //   }))
     }
 
     onSearchChange = (event) => {
@@ -28,7 +32,11 @@ class App extends React.Component {
         const { pokemons, searchfield } = this.state;
         const filteredPokemons = pokemons.filter( inputPokemon => {
             return (
-                inputPokemon.name.toLowerCase().includes(searchfield.toLowerCase()) 
+                //search by name
+                inputPokemon.name.toLowerCase().includes(searchfield.toLowerCase())
+                ||
+                //search by id
+                inputPokemon.id.toLowerCase().includes(searchfield.toLowerCase())
             );
         })
         return !pokemons.length ?
