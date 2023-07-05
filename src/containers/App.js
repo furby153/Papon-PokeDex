@@ -3,14 +3,13 @@ import SearchBox from "../components/SearchBox";
 import CardList from "../components/CardList";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundary";
-// import { robots } from "./robots";
 import './App.css';
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            robots: [],
+            pokemons: [],
             searchfield: '',
         }
     }
@@ -18,7 +17,7 @@ class App extends React.Component {
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            .then(users => this.setState({ robots: users }))
+            .then(users => this.setState({ pokemons: users }))
     }
 
     onSearchChange = (event) => {
@@ -26,17 +25,16 @@ class App extends React.Component {
     }
 
     render(){
-        const { robots, searchfield } = this.state;
-        const filteredRobots = robots.filter( inputRobot => {
+        const { pokemons, searchfield } = this.state;
+        const filteredRobots = pokemons.filter( inputRobot => {
             return (
-                // filter by name
                 inputRobot.name.toLowerCase().includes(searchfield.toLowerCase()) 
                 ||
                 // filter by email
                 inputRobot.email.toLowerCase().includes(searchfield.toLowerCase())
             );
         })
-        return !robots.length ?
+        return !pokemons.length ?
         <h1 className='tc f1'>Loading</h1> :
         (
             <div className="tc">
@@ -44,7 +42,7 @@ class App extends React.Component {
             <SearchBox searchChange={this.onSearchChange}/>
             <Scroll>
                 <ErrorBoundary>
-                    <CardList robots={filteredRobots}/>
+                    <CardList pokemons={filteredRobots}/>
                 </ErrorBoundary>
             </Scroll>
             </div>  
