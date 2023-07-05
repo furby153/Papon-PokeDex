@@ -15,13 +15,12 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
             .then(response => response.json())
-            .then(users => this.setState({ pokemons: users }))
-
-        // this.state.pokemons.forEach(((item, i) => {
-        //     item.id = i + 1;
-        //   }))
+            .then(users => this.setState({ pokemons: users.results }))
+        this.state.pokemons.forEach(((item, i) => {
+            item.id = i + 1;
+          }))
     }
 
     onSearchChange = (event) => {
