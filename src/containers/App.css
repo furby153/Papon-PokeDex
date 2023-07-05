@@ -1,18 +1,18 @@
 @font-face {
-    font-family: 'SEGA LOGO FONT';
+    font-family: 'POKEMON SOLID FONT';
     font-style: normal;
     font-weight: normal;
-    src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
+    src: local('POKEMON SOLID FONT'), url('../fonts/pokemonsolid.woff') format('woff');
 }
 
 h1 {
-    font-family: 'SEGA LOGO FONT';
+    font-family: 'POKEMON SOLID FONT';
     font-weight: 200;
-    color: azure;
+    color: rgb(255, 255, 0);
 }
 
 #searchBoxText {
-    font-family: 'SEGA LOGO FONT';
+    font-family: 'POKEMON SOLID FONT';
     font-weight: 20;
-    color: azure;
+    color: rgb(255, 255, 0);
 }

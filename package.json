@@ -1,5 +1,6 @@
 {
   "name": "papon-pokedex",
+  "homepage": "https://furby153.github.io/Papon-PokeDex",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
