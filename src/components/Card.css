@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'POKEMON SOLID FONT';
+    font-style: normal;
+    font-weight: normal;
+    src: local('POKEMON SOLID FONT'), url('../fonts/pokemonsolid.woff') format('woff');
+}
+
+h2 {
+    font-family: 'POKEMON SOLID FONT';
+    color: rgba(56, 56, 56, 0.85);
+}

@@ -26,12 +26,9 @@ class App extends React.Component {
 
     render(){
         const { pokemons, searchfield } = this.state;
-        const filteredRobots = pokemons.filter( inputRobot => {
+        const filteredPokemons = pokemons.filter( inputPokemon => {
             return (
-                inputRobot.name.toLowerCase().includes(searchfield.toLowerCase()) 
-                ||
-                // filter by email
-                inputRobot.email.toLowerCase().includes(searchfield.toLowerCase())
+                inputPokemon.name.toLowerCase().includes(searchfield.toLowerCase()) 
             );
         })
         return !pokemons.length ?
@@ -42,7 +39,7 @@ class App extends React.Component {
             <SearchBox searchChange={this.onSearchChange}/>
             <Scroll>
                 <ErrorBoundary>
-                    <CardList pokemons={filteredRobots}/>
+                    <CardList pokemons={filteredPokemons}/>
                 </ErrorBoundary>
             </Scroll>
             </div>  
