@@ -9,9 +9,9 @@ const CardList = ( { pokemons } ) => {
                     return (
                         <Card 
                             key={pokemons[i].id} 
-                            id={pokemons[i].id} 
                             name={pokemons[i].name} 
                             url={pokemons[i].url}
+                            id={pokemons[i].id} 
                             height={pokemons[i].height}
                             weight={pokemons[i].weight}
                         />
