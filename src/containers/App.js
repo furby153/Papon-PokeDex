@@ -33,9 +33,6 @@ class App extends React.Component {
             return (
                 //search by name
                 inputPokemon.name.toLowerCase().includes(searchfield.toLowerCase())
-                ||
-                //search by id
-                inputPokemon.id.toLowerCase().includes(searchfield.toLowerCase())
             );
         })
         return !pokemons.length ?
