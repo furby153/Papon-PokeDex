@@ -18,6 +18,18 @@ class Card extends React.Component {
         }));
     };
 
+    // handleMouseEnter = () => {
+    //     this.setState(() => ({
+    //         showDetails: true,
+    //       }));
+    // }
+
+    // handleMouseLeave = () => {
+    //     this.setState(() => ({
+    //         showDetails: false,
+    //       }));
+    // }
+
     handleImageError = () => {
         this.setState({ imageError: true });
     };
@@ -30,6 +42,8 @@ class Card extends React.Component {
             <div 
                 className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'
                 onClick={this.handleClick} // Add the click event handler
+                // onMouseEnter={this.handleMouseEnter}
+                // onMouseLeave={this.handleMouseLeave}
             >
                 {imageError ? ( // Render alternate image if there was an error
                     <img
