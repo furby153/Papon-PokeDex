@@ -22,7 +22,6 @@ class App extends React.Component {
                 const arrForID = item.url.split('/');
                 item.id = arrForID[arrForID.length-2];
             })
-            console.log(result);
             this.setState({ pokemons: result})
     }
 
