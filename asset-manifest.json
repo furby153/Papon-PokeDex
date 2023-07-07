@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Papon-PokeDex/static/css/main.99f8f3d6.css",
+    "main.js": "/Papon-PokeDex/static/js/main.3024f8dd.js",
+    "static/js/787.9a02d372.chunk.js": "/Papon-PokeDex/static/js/787.9a02d372.chunk.js",
+    "static/media/pokemonsolid.woff": "/Papon-PokeDex/static/media/pokemonsolid.fa31c3fd1cadf2446e8b.woff",
+    "index.html": "/Papon-PokeDex/index.html",
+    "main.99f8f3d6.css.map": "/Papon-PokeDex/static/css/main.99f8f3d6.css.map",
+    "main.3024f8dd.js.map": "/Papon-PokeDex/static/js/main.3024f8dd.js.map",
+    "787.9a02d372.chunk.js.map": "/Papon-PokeDex/static/js/787.9a02d372.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99f8f3d6.css",
+    "static/js/main.3024f8dd.js"
+  ]
+}
