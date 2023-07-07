@@ -18,8 +18,9 @@ class App extends React.Component {
             const resp = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
             const data = await resp.json();
             const result = [...data.results];
-            result.forEach((item, i) => {
-                item.id = i+1;
+            result.forEach((item) => {
+                const arrForID = item.url.split('/');
+                item.id = arrForID[arrForID.length-2];
             })
             console.log(result);
             this.setState({ pokemons: result})
