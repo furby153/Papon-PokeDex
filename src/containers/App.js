@@ -14,10 +14,15 @@ class App extends React.Component {
         }
     }
 
-    componentDidMount() {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
-            .then(response => response.json())
-            .then(users => this.setState({ pokemons: users.results }))
+    async componentDidMount() {
+            const resp = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+            const data = await resp.json();
+            const result = [...data.results];
+            result.forEach((item, i) => {
+                item.id = i+1;
+            })
+            console.log(result);
+            this.setState({ pokemons: result})
     }
 
     onSearchChange = (event) => {
