@@ -10,7 +10,7 @@ const SearchBox = ( { searchChange } ) => {
                 onChange={searchChange}
             />
             <br/>
-            <p id='searchBoxText'>Search by name or Poke-ID</p>
+            <p id='searchBoxText'>Search by name or Poké ID</p>
         </div>
         
     );

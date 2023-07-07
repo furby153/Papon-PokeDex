@@ -7,8 +7,8 @@ const Card = ({ name, url, id}) => {
             <img alt='Pokemon' src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} width={200} height={200} />
             <div>
                 <h2>{name}</h2>
-                <p>url: {url}</p>
-                <p>id: {id}</p>
+                <h5>PokéID: {id}</h5>
+                {/* <p>{url}</p> */}
             </div>
         </div>
     );

@@ -36,13 +36,16 @@ class App extends React.Component {
             return (
                 //search by name
                 inputPokemon.name.toLowerCase().includes(searchfield.toLowerCase())
+                ||
+                //searh by id
+                inputPokemon.id.toLowerCase().includes(searchfield.toLowerCase())
             );
         })
         return !pokemons.length ?
         <h1 className='tc f1'>Loading</h1> :
         (
             <div className="tc">
-            <h1 className="f1">PokeDex</h1>
+            <h1 className="f1">PokéDex</h1>
             <SearchBox searchChange={this.onSearchChange}/>
             <Scroll>
                 <ErrorBoundary>
