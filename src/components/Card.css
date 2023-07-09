@@ -9,3 +9,11 @@ h2 {
     font-family: 'POKEMON SOLID FONT';
     color: rgba(56, 56, 56, 0.85);
 }
+
+.heightAndWeight {
+    font-style: italic;
+}
+
+.stats {
+    color: darkolivegreen;
+}

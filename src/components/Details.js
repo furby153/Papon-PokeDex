@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Stats from './Stats';
+
 
 class Details extends Component {
   constructor(props) {
@@ -8,16 +10,15 @@ class Details extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // Fetch data from the URL
-    fetch(this.props.url)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({ details: data });
-      })
-      .catch((error) => {
+    try {
+        const response = await fetch(this.props.url)
+        const data = await response.json();
+        this.setState({ details: data});
+    } catch(error) {
         console.log('Error fetching details:', error);
-      });
+    }
   }
 
   render() {
@@ -30,10 +31,12 @@ class Details extends Component {
     // Render the fetched details
     return (
       <div>
-        <p>Height: {details.height}</p>
-        <p>Weight: {details.weight}</p>
+        <p className='heightAndWeight'>Height: {details.height}</p>
+        <p className='heightAndWeight'>Weight: {details.weight}</p>
+        <Stats stats={details.stats}/>
         {/* Add more details as needed */}
       </div>
+      
     );
   }
 }
