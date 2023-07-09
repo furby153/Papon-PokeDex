@@ -4,7 +4,6 @@ const Stats = ( { stats } ) => {
     return (
         <div className='tl stats'>
             <h4>Base Status</h4>
-            
             {stats.map((stats, index) => ( //Loop for react instead of <p> {stats[i].stat.name} : {stats[i].base_stat} </p>
                 <p key={index}>
                     {stats.stat.name}: {stats.base_stat}
