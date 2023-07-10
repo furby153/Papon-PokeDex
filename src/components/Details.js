@@ -16,19 +16,23 @@ class Details extends Component {
         const response = await fetch(this.props.url)
         const data = await response.json();
         this.setState({ details: data});
-        // GET Evolution chain
-        // const response2 = await fetch(data.species.url);
+        
+    } catch(error) {
+        console.log('Error fetching details:', error);
+    }
+
+    // GET Evolution chain
+        // const response2 = await fetch(this.details.species.url);
         // const speciesData = await response2.json();
         // const response3 = await fetch(speciesData.evolution_chain.url);
         // const evolutionChain = await response3.json();
         // this.setState({ evolutionChainState: evolutionChain});
-    } catch(error) {
-        console.log('Error fetching details:', error);
-    }
   }
 
   render() {
-    const { details } = this.state;
+    const { details,  
+            //evolutionChainState
+          } = this.state;
 
     if (!details) {
       return <div>Loading...</div>;
@@ -40,6 +44,8 @@ class Details extends Component {
         <p className='heightAndWeight'>Height: {details.height}</p>
         <p className='heightAndWeight'>Weight: {details.weight}</p>
         <Stats stats={details.stats}/>
+        {/* {EvolutionChain} */}
+        {/* <p>{evolutionChainState.chain.evolves_to[0].species.name}</p> */}
         {/* Add more details as needed */}
       </div>
     );
