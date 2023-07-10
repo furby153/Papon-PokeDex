@@ -16,6 +16,7 @@ class Details extends Component {
         const response = await fetch(this.props.url)
         const data = await response.json();
         this.setState({ details: data});
+        // GET Evolution chain
         // const response2 = await fetch(data.species.url);
         // const speciesData = await response2.json();
         // const response3 = await fetch(speciesData.evolution_chain.url);
