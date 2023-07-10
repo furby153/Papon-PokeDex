@@ -62,7 +62,7 @@ class Card extends React.Component {
                     />
                 )}
                 <div>
-                    <h2>{name}</h2>
+                    <h2>{name.charAt(0).toUpperCase()+name.slice(1)}</h2>
                     <h5>PokéID: {id}</h5>
                     {/* Render the Details component conditionally */}
                     {showDetails && <Details url={url} />}
