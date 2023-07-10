@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Stats from './Stats';
 
-
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
       details: null,
+      evolutionChainState: null,
     };
   }
 
@@ -16,6 +16,11 @@ class Details extends Component {
         const response = await fetch(this.props.url)
         const data = await response.json();
         this.setState({ details: data});
+        // const response2 = await fetch(data.species.url);
+        // const speciesData = await response2.json();
+        // const response3 = await fetch(speciesData.evolution_chain.url);
+        // const evolutionChain = await response3.json();
+        // this.setState({ evolutionChainState: evolutionChain});
     } catch(error) {
         console.log('Error fetching details:', error);
     }
@@ -36,7 +41,6 @@ class Details extends Component {
         <Stats stats={details.stats}/>
         {/* Add more details as needed */}
       </div>
-      
     );
   }
 }
