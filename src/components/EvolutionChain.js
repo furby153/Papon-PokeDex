@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EvolutionChainDetails from './EvolutionChainDetails';
 
 class EvolutionChain extends Component {
     constructor(props) {
@@ -32,7 +33,8 @@ class EvolutionChain extends Component {
       return (
         <div div className='tl ba b--blue br3 ph3 bg-lightest-blue stats'>
           <h5>Pokémon Evolution Chain</h5>
-          <p>{evolutionChain.chain.species.name}</p>
+          <EvolutionChainDetails evolution={evolutionChain.chain} />
+          {/* <p>{evolutionChain.chain.species.name}</p> */}
         </div>
       );
     }
