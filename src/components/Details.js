@@ -35,7 +35,8 @@ class Details extends Component {
         <p className='heightAndWeight'>Height: {details.height}</p>
         <p className='heightAndWeight'>Weight: {details.weight}</p>
         <Stats stats={details.stats}/>
-        <p>Evolution Chain</p>
+        <br/>
+        {/* <p>Evolution Chain</p> */}
         <EvolutionChain speciesURL={details.species.url}/>
         {/* Add more details as needed */}
       </div>
