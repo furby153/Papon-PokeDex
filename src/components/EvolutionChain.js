@@ -11,15 +11,15 @@ class EvolutionChain extends Component {
     async componentDidMount() {
       // Fetch data from the URL
       try {
-        const response = await fetch(this.props);
+        const response = await fetch(this.props.speciesURL);
+        console.log(this.props.speciesURL);
         const speciesData = await response.json();
         const response2 = await fetch(speciesData.evolution_chain.url);
-        const evolutionChain = await response2.json();
-        this.setState({ evolutionchain: evolutionChain});
+        const evoChain  = await response2.json();
+        this.setState({ evolutionchain: evoChain });
       } catch(error) {
           console.log('Error fetching details:', error);
       }
-          
     }
   
     render() {
@@ -31,8 +31,8 @@ class EvolutionChain extends Component {
   
       // Render the fetched details
       return (
-        <div>
-          <p>{evolutionchain.species.name}</p>
+        <div div className='tl ba b--blue br3 ph3 bg-lightest-blue stats'>
+          <p>{evolutionchain.chain.species.name}</p>
         </div>
       );
     }
