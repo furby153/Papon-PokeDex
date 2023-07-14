@@ -4,38 +4,50 @@ function EvolutionLeveling({ leveling }) {
   if (!leveling) {
     return null;
   }
-    const evolutionType = leveling.trigger.name;
-  
-  if ( evolutionType === 'level-up') {
-    const { min_level } = leveling;
-    return (
-      <div>
-        <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
-        <p className='evolutionCondition'>Minimum Level: {min_level}</p>
-      </div>
-    );
+
+  const evolutionType = leveling.trigger.name;
+  let evolutionMethodDetails;
+
+  if (evolutionType === 'level-up') {
+    const { min_level,min_happiness } = leveling;
+    if (!min_happiness && min_level) {
+      evolutionMethodDetails = (
+        <>
+          <p className='evolutionCondition'>Minimum Level: {min_level}</p>
+        </>
+      );
+    } else if (min_happiness && !min_level) {
+      evolutionMethodDetails = (
+        <>
+          <p className='evolutionCondition'>Minimum Happpiness: {min_happiness}</p>
+        </>
+      );
+    }
+    
   } else if (evolutionType === 'trade') {
-    return (
-    <div>
-      <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
-    </div>
+    evolutionMethodDetails = (
+      <>
+        <p className='evolutionCondition'>Trade Pokémon with other players</p>
+      </>
     );
   } else if (evolutionType === 'use-item') {
     const evolutionItem = leveling.item.name;
-    return (
-      <div>
-        <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
-        <p className='evolutionCondition'>Item: {evolutionItem}</p>
-      </div>
+    evolutionMethodDetails = (
+      <>
+        <p className='evolutionCondition'>Use item: {evolutionItem.charAt(0).toUpperCase() + evolutionItem.slice(1)}</p>
+      </>
     );
   } else {
-    return (
-      <div>
-        <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
-      </div>
+    evolutionMethodDetails = (
+      <>
+      </>
     );
   }
-  
+
+  return <div>
+    <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
+    {evolutionMethodDetails}
+    </div>;
 }
 
 export default EvolutionLeveling;
