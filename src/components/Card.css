@@ -21,3 +21,7 @@ h2 {
 .pokemonName {
     font-family: 'POKEMON SOLID FONT';
 }
+
+.evolutionCondition {
+    font-style: italic;
+}
