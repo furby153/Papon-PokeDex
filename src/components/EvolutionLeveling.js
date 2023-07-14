@@ -1,4 +1,6 @@
 import React from 'react';
+import { styled } from '@mui/system';
+import { KeyboardArrowDown } from '@mui/icons-material';
 
 function EvolutionLeveling({ leveling }) {
   if (!leveling) {
@@ -7,9 +9,12 @@ function EvolutionLeveling({ leveling }) {
 
   const evolutionType = leveling.trigger.name;
   let evolutionMethodDetails;
+  const StyledIcon = styled(KeyboardArrowDown)`
+  /* Add any custom styling here */
+`;
 
   if (evolutionType === 'level-up') {
-    const { min_level,min_happiness } = leveling;
+    const { min_level, min_happiness } = leveling;
     if (!min_happiness && min_level) {
       evolutionMethodDetails = (
         <>
@@ -47,6 +52,7 @@ function EvolutionLeveling({ leveling }) {
   return <div>
     <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
     {evolutionMethodDetails}
+    <StyledIcon />
     </div>;
 }
 

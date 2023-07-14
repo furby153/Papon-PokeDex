@@ -34,7 +34,6 @@ class EvolutionChain extends Component {
         <div div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>
           <h5>Pokémon Evolution Chain</h5>
           <EvolutionChainDetails evolution={evolutionChain.chain} />
-          {/* <p>{evolutionChain.chain.species.name}</p> */}
         </div>
       );
     }
