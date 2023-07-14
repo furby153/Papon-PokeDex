@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@mui/system';
-import { KeyboardArrowDown } from '@mui/icons-material';
+import { KeyboardDoubleArrowDown } from '@mui/icons-material';
 
 function EvolutionLeveling({ leveling }) {
   if (!leveling) {
@@ -9,7 +9,7 @@ function EvolutionLeveling({ leveling }) {
 
   const evolutionType = leveling.trigger.name;
   let evolutionMethodDetails;
-  const StyledIcon = styled(KeyboardArrowDown)`
+  const ArrowDownIcon = styled(KeyboardDoubleArrowDown)`
   /* Add any custom styling here */
 `;
 
@@ -52,7 +52,7 @@ function EvolutionLeveling({ leveling }) {
   return <div>
     <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
     {evolutionMethodDetails}
-    <StyledIcon />
+    <ArrowDownIcon />
     </div>;
 }
 
