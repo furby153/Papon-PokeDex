@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Papon-PokeDex/static/css/main.5a4b2d7f.css",
-    "main.js": "/Papon-PokeDex/static/js/main.f8027997.js",
+    "main.css": "/Papon-PokeDex/static/css/main.f03f131e.css",
+    "main.js": "/Papon-PokeDex/static/js/main.69ae497c.js",
     "static/js/787.9a02d372.chunk.js": "/Papon-PokeDex/static/js/787.9a02d372.chunk.js",
     "static/media/pokeball.png": "/Papon-PokeDex/static/media/pokeball.4f5530cad6fe2b44ca33.png",
     "static/media/pokemonsolid.woff": "/Papon-PokeDex/static/media/pokemonsolid.fa31c3fd1cadf2446e8b.woff",
     "index.html": "/Papon-PokeDex/index.html",
-    "main.5a4b2d7f.css.map": "/Papon-PokeDex/static/css/main.5a4b2d7f.css.map",
-    "main.f8027997.js.map": "/Papon-PokeDex/static/js/main.f8027997.js.map",
+    "main.f03f131e.css.map": "/Papon-PokeDex/static/css/main.f03f131e.css.map",
+    "main.69ae497c.js.map": "/Papon-PokeDex/static/js/main.69ae497c.js.map",
     "787.9a02d372.chunk.js.map": "/Papon-PokeDex/static/js/787.9a02d372.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a4b2d7f.css",
-    "static/js/main.f8027997.js"
+    "static/css/main.f03f131e.css",
+    "static/js/main.69ae497c.js"
   ]
 }
