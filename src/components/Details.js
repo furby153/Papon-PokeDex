@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stats from './Stats';
-
+import EvolutionChain from './EvolutionChain';
 
 class Details extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class Details extends Component {
         const response = await fetch(this.props.url)
         const data = await response.json();
         this.setState({ details: data});
+        
     } catch(error) {
         console.log('Error fetching details:', error);
     }
@@ -34,9 +35,11 @@ class Details extends Component {
         <p className='heightAndWeight'>Height: {details.height}</p>
         <p className='heightAndWeight'>Weight: {details.weight}</p>
         <Stats stats={details.stats}/>
+        <br/>
+        {/* <p>Evolution Chain</p> */}
+        <EvolutionChain speciesURL={details.species.url}/>
         {/* Add more details as needed */}
       </div>
-      
     );
   }
 }
