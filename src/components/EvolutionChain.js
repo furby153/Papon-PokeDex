@@ -26,12 +26,12 @@ class EvolutionChain extends Component {
       const { evolutionChain } = this.state;
   
       if (!evolutionChain) {
-        return <div className='tl ba b--blue br3 ph3 bg-lightest-blue stats'>Loading...</div>;
+        return <div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>Loading...</div>;
       }
   
       // Render the fetched details
       return (
-        <div div className='tl ba b--blue br3 ph3 bg-lightest-blue stats'>
+        <div div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>
           <h5>Pokémon Evolution Chain</h5>
           <EvolutionChainDetails evolution={evolutionChain.chain} />
           {/* <p>{evolutionChain.chain.species.name}</p> */}

@@ -17,3 +17,7 @@ h2 {
 .stats {
     color: darkolivegreen;
 }
+
+.pokemonName {
+    font-family: 'POKEMON SOLID FONT';
+}
