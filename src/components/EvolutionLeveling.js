@@ -50,7 +50,7 @@ function EvolutionLeveling({ leveling }) {
   }
 
   return <div>
-    <h4>Evolution method: {evolutionType.toUpperCase()}</h4>
+    <h5>Evolution method: {evolutionType.toUpperCase()}</h5>
     {evolutionMethodDetails}
     <ArrowDownIcon />
     </div>;
