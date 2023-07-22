@@ -41,7 +41,7 @@ class Card extends React.Component {
         
         return (
             <div 
-                className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'
+                className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} bw2 shadow-5`}
                 onClick={this.handleClick} // Add the click event handler
                 // onMouseEnter={this.handleMouseEnter}
                 // onMouseLeave={this.handleMouseLeave}
