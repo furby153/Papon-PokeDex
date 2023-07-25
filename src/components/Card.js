@@ -64,12 +64,16 @@ class Card extends React.Component {
                     <h5>PokéID: {id}</h5>
                 </div>
                 <div>
-                    <button 
-                        className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
-                        onClick={this.handleShowDetailsClick}
-                    >
-                        {showDetails ? "Hide Details" : "Show Details"}
-                    </button>
+                    {!showDetails && <p>Click to show details</p>}
+                    {
+                        showDetails && 
+                        <button 
+                            className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
+                            onClick={this.handleShowDetailsClick}
+                        >
+                            {showDetails ? "Hide Details" : "Click to show details"}
+                        </button>
+                    }
                     {showDetails && <Details url={url} />}
                 </div>
             </div>
