@@ -7,32 +7,31 @@ class Card extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          showDetails: false,
-          imageError: false, // Add imageError state to track if the image fails to load
+            showDetails: false,
+            imageError: false,
+            // firstClick: true, // Add firstClick state to track if it's the first click on the card
         };
-      }
+    }
 
     handleClick = () => {
+        const { showDetails} = this.state;
+        if (!showDetails) {
+            this.setState({
+                showDetails: true,
+            });
+        }
+    };
+    
+    handleShowDetailsClick = () => {
         this.setState((prevState) => ({
-          showDetails: !prevState.showDetails,
+            showDetails: !prevState.showDetails,
         }));
     };
-
-    // handleMouseEnter = () => {
-    //     this.setState(() => ({
-    //         showDetails: true,
-    //       }));
-    // }
-
-    // handleMouseLeave = () => {
-    //     this.setState(() => ({
-    //         showDetails: false,
-    //       }));
-    // }
 
     handleImageError = () => {
         this.setState({ imageError: true });
     };
+
 
     render() {
         const { name, url, id } = this.props;
@@ -43,8 +42,6 @@ class Card extends React.Component {
             <div 
                 className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} bw2 shadow-5`}
                 onClick={this.handleClick} // Add the click event handler
-                // onMouseEnter={this.handleMouseEnter}
-                // onMouseLeave={this.handleMouseLeave}
             >
                 {imageError ? ( // Render alternate image if there was an error
                     <img
@@ -65,7 +62,14 @@ class Card extends React.Component {
                 <div>
                     <h2>{name.charAt(0).toUpperCase()+name.slice(1)}</h2>
                     <h5>PokéID: {id}</h5>
-                    {/* Render the Details component conditionally */}
+                </div>
+                <div>
+                    <button 
+                        className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
+                        onClick={this.handleShowDetailsClick}
+                    >
+                        {showDetails ? "Hide Details" : "Show Details"}
+                    </button>
                     {showDetails && <Details url={url} />}
                 </div>
             </div>

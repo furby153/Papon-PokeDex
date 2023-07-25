@@ -10,6 +10,7 @@ const Stats = ( { stats } ) => {
                 </p>
             ))}
         </div>
+        
     );
 }
 

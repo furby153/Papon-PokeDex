@@ -32,9 +32,11 @@ class EvolutionChain extends Component {
       // Render the fetched details
       return (
         <div div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>
-          <h4>Pokémon Evolution Chain</h4>
+          <h4>Pokémon</h4>
+          <h4>Evolution Chain</h4>
           <EvolutionChainDetails evolution={evolutionChain.chain} />
         </div>
+
       );
     }
   }
