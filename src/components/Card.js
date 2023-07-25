@@ -40,7 +40,7 @@ class Card extends React.Component {
         
         return (
             <div 
-                className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} bw2 shadow-5`}
+                className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} ${showDetails ? '' : 'onCardHover'} bw2 shadow-5`}
                 onClick={this.handleClick} // Add the click event handler
             >
                 {imageError ? ( // Render alternate image if there was an error
@@ -64,12 +64,16 @@ class Card extends React.Component {
                     <h5>PokéID: {id}</h5>
                 </div>
                 <div>
-                    <button 
-                        className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
-                        onClick={this.handleShowDetailsClick}
-                    >
-                        {showDetails ? "Hide Details" : "Show Details"}
-                    </button>
+                    {!showDetails && <p>Click to show details</p>}
+                    {
+                        showDetails && 
+                        <button 
+                            className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
+                            onClick={this.handleShowDetailsClick}
+                        >
+                            {showDetails ? "Hide Details" : "Click to show details"}
+                        </button>
+                    }
                     {showDetails && <Details url={url} />}
                 </div>
             </div>
