@@ -42,7 +42,7 @@ class Card extends React.Component {
         return (
             <div 
                 className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} bw2 shadow-5`}
-                onClick={this.handleClick} // Add the click event handler
+                // onClick={this.handleClick} // Add the click event handler
                 // onMouseEnter={this.handleMouseEnter}
                 // onMouseLeave={this.handleMouseLeave}
             >
@@ -66,6 +66,11 @@ class Card extends React.Component {
                     <h2>{name.charAt(0).toUpperCase()+name.slice(1)}</h2>
                     <h5>PokéID: {id}</h5>
                     {/* Render the Details component conditionally */}
+                    <button 
+                        className={`showDetailsButton ${showDetails ? "showDetailsRed" : "showDetailsGreen"}`}
+                        onClick={this.handleClick}>
+                        {showDetails ? "Hide Details" : "Show Details"}
+                    </button>
                     {showDetails && <Details url={url} />}
                 </div>
             </div>

@@ -25,3 +25,21 @@ h2 {
 .evolutionCondition {
     font-style: italic;
 }
+
+.showDetailsButton {
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+}
+
+.showDetailsGreen:hover {
+    background-color: green;
+    color: white;
+}
+
+.showDetailsRed:hover {
+    background-color: red;
+    color:white
+}

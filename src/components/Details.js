@@ -32,6 +32,7 @@ class Details extends Component {
     // Render the fetched details
     return (
       <div>
+        <br/>
         <div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>
           <p className='heightAndWeight'>Height: {details.height}</p>
           <p className='heightAndWeight'>Weight: {details.weight}</p>
