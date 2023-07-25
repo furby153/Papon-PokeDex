@@ -1,7 +1,7 @@
 {
   "name": "papon-pokedex",
   "homepage": "https://furby153.github.io/Papon-PokeDex",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
