@@ -31,15 +31,24 @@ h2 {
     width: 100%;
     cursor: pointer;
     border: none;
+    background-color: rgb(125, 200, 230);
     padding: 10px;
 }
 
-.showDetailsGreen:hover {
+.showEachDetailsButton {
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+}
+
+.greenHover:hover {
     background-color: green;
     color: white;
 }
 
-.showDetailsRed:hover {
+.redHover:hover {
     background-color: red;
     color:white
 }

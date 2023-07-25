@@ -39,7 +39,7 @@ function EvolutionLeveling({ leveling }) {
     const evolutionItem = leveling.item.name;
     evolutionMethodDetails = (
       <>
-        <p className='evolutionCondition'>Use item: {evolutionItem.charAt(0).toUpperCase() + evolutionItem.slice(1)}</p>
+        <p className='evolutionCondition'>{evolutionItem.charAt(0).toUpperCase() + evolutionItem.slice(1)}</p>
       </>
     );
   } else {
@@ -50,7 +50,8 @@ function EvolutionLeveling({ leveling }) {
   }
 
   return <div>
-    <h5>Evolution method: {evolutionType.toUpperCase()}</h5>
+    <h5>Evolution method:</h5>
+    <p className='evolutionCondition'>{evolutionType.charAt(0).toUpperCase() + evolutionType.slice(1)}</p>
     {evolutionMethodDetails}
     <ArrowDownIcon />
     </div>;
