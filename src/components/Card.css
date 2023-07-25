@@ -10,6 +10,10 @@ h2 {
     color: rgba(56, 56, 56, 0.85);
 }
 
+.onCardHover:hover {
+    cursor: pointer;
+}
+
 .heightAndWeight {
     font-style: italic;
 }

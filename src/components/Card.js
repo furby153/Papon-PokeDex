@@ -40,7 +40,7 @@ class Card extends React.Component {
         
         return (
             <div 
-                className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} bw2 shadow-5`}
+                className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} ${showDetails ? '' : 'onCardHover'} bw2 shadow-5`}
                 onClick={this.handleClick} // Add the click event handler
             >
                 {imageError ? ( // Render alternate image if there was an error
