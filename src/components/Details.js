@@ -54,30 +54,31 @@ class Details extends Component {
           buttonText="Height & Weight"
           isShown={showHeightAndWeight}
           onClick={() => this.toggleSection('showHeightAndWeight')}
-        >
-          {showHeightAndWeight && (
+          children={
             <div className="tc ba b--blue br3 ph3 bg-lightest-blue stats">
               <p className="heightAndWeight">Height: {details.height}</p>
               <p className="heightAndWeight">Weight: {details.weight}</p>
             </div>
-          )}
-        </ShowHideSection>
+          }
+        />
 
         <ShowHideSection
           buttonText="Status"
           isShown={showStats}
           onClick={() => this.toggleSection('showStats')}
-        >
-          {showStats && <Stats stats={details.stats} />}
-        </ShowHideSection>
+          children={
+            <Stats stats={details.stats} />
+          }
+        />
 
         <ShowHideSection
           buttonText="Evolution Chain"
           isShown={showEvolutionChain}
           onClick={() => this.toggleSection('showEvolutionChain')}
-        >
-          {showEvolutionChain && <EvolutionChain speciesURL={details.species.url} />}
-        </ShowHideSection>
+          children={
+            <EvolutionChain speciesURL={details.species.url} />
+          }
+        />
 
         {/* Add more details as needed */}
       </div>
