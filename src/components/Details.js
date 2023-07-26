@@ -20,9 +20,9 @@ const ShowHideSection = ({ buttonText, isShown, onClick, children }) => (
 class Details extends Component {
   state = {
     details: null,
+    showHeightAndWeight: false,
     showStats: false,
     showEvolutionChain: false,
-    showHeightAndWeight: false,
   };
 
   async componentDidMount() {
