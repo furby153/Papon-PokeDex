@@ -6,7 +6,7 @@ import './Details.css';
 const LoadingMessage = () => <div>Loading...</div>;
 
 const ShowHideSection = ({ buttonText, isShown, onClick, children }) => (
-  <div>
+  <div className='mv2'>
     <button
       className={`showEachDetailsButton ${isShown ? 'redHover' : 'greenHover'}`}
       onClick={onClick}
@@ -50,7 +50,6 @@ class Details extends Component {
 
     return (
       <div className="details-container">
-        <br/>
         <ShowHideSection
           buttonText="Height & Weight"
           isShown={showHeightAndWeight}
@@ -64,7 +63,6 @@ class Details extends Component {
           )}
         </ShowHideSection>
 
-        <br/>
         <ShowHideSection
           buttonText="Status"
           isShown={showStats}
@@ -73,7 +71,6 @@ class Details extends Component {
           {showStats && <Stats stats={details.stats} />}
         </ShowHideSection>
 
-        <br/>
         <ShowHideSection
           buttonText="Evolution Chain"
           isShown={showEvolutionChain}
