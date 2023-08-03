@@ -3,44 +3,41 @@ import Stats from './Stats';
 import EvolutionChain from './EvolutionChain';
 import './Details.css';
 
+const LoadingMessage = () => <div>Loading...</div>;
+
+const ShowHideSection = ({ buttonText, isShown, onClick, children }) => (
+  <div className='mv2'>
+    <button
+      className={`showEachDetailsButton ${isShown ? 'redHover' : 'greenHover'}`}
+      onClick={onClick}
+    >
+      {isShown ? 'Hide' : buttonText}
+    </button>
+    {isShown && children}
+  </div>
+);
+
 class Details extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      details: null,
-      showStats: null,
-      showEvolutionChain: null,
-      showHeightAndWeight: false,
-    };
-  }
+  state = {
+    details: null,
+    showHeightAndWeight: false,
+    showStats: false,
+    showEvolutionChain: false,
+  };
 
   async componentDidMount() {
-    // Fetch data from the URL
     try {
-        const response = await fetch(this.props.url)
-        const data = await response.json();
-        this.setState({ details: data});
-        
-    } catch(error) {
-        console.log('Error fetching details:', error);
+      const response = await fetch(this.props.url);
+      const data = await response.json();
+      this.setState({ details: data });
+    } catch (error) {
+      console.log('Error fetching details:', error);
     }
   }
 
-  handleClickShowHeightAndWeight = () => {
+  toggleSection = (section) => {
     this.setState((prevState) => ({
-      showHeightAndWeight: !prevState.showHeightAndWeight,
-    }));
-  };
-
-  handleClickShowStats = () => {
-    this.setState((prevState) => ({
-      showStats: !prevState.showStats,
-    }));
-  };
-
-  handleClickShowEvolutionChain = () => {
-    this.setState((prevState) => ({
-      showEvolutionChain: !prevState.showEvolutionChain,
+      [section]: !prevState[section],
     }));
   };
 
@@ -48,46 +45,41 @@ class Details extends Component {
     const { details, showStats, showEvolutionChain, showHeightAndWeight } = this.state;
 
     if (!details) {
-      return <div>Loading...</div>;
+      return <LoadingMessage />;
     }
 
-    // Render the fetched details
     return (
-      <div>
-        <br/>
-        <div>
-          <button 
-              className={`showEachDetailsButton ${showHeightAndWeight ? "redHover" : "greenHover"}`}
-              onClick={this.handleClickShowHeightAndWeight}>
-              {showHeightAndWeight ? "Hide" : "Height & Weight"}
-          </button>
-          {showHeightAndWeight && (
-            <div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>
-              <p className='heightAndWeight'>Height: {details.height}</p>
-              <p className='heightAndWeight'>Weight: {details.weight}</p>
+      <div className="details-container">
+        <ShowHideSection
+          buttonText="Height & Weight"
+          isShown={showHeightAndWeight}
+          onClick={() => this.toggleSection('showHeightAndWeight')}
+          children={
+            <div className="tc ba b--blue br3 ph3 bg-lightest-blue stats">
+              <p className="heightAndWeight">Height: {details.height}</p>
+              <p className="heightAndWeight">Weight: {details.weight}</p>
             </div>
-          )}
-        </div>
-        
-        <br/>
-        <div>
-          <button 
-              className={`showEachDetailsButton ${showStats ? "redHover" : "greenHover"}`}
-              onClick={this.handleClickShowStats}>
-              {showStats ? "Hide" : "Status"}
-          </button>
-          {showStats && <Stats stats={details.stats}/>}
-        </div>
+          }
+        />
 
-        <br/>
-        <div>
-          <button 
-              className={`showEachDetailsButton ${showEvolutionChain ? "redHover" : "greenHover"}`}
-              onClick={this.handleClickShowEvolutionChain}>
-              {showEvolutionChain ? "Hide" : "Evolution Chain"}
-          </button>
-          {showEvolutionChain && <EvolutionChain speciesURL={details.species.url}/>}
-        </div>
+        <ShowHideSection
+          buttonText="Status"
+          isShown={showStats}
+          onClick={() => this.toggleSection('showStats')}
+          children={
+            <Stats stats={details.stats} />
+          }
+        />
+
+        <ShowHideSection
+          buttonText="Evolution Chain"
+          isShown={showEvolutionChain}
+          onClick={() => this.toggleSection('showEvolutionChain')}
+          children={
+            <EvolutionChain speciesURL={details.species.url} />
+          }
+        />
+
         {/* Add more details as needed */}
       </div>
     );
