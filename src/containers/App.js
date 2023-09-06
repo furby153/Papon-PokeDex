@@ -11,6 +11,7 @@ class App extends React.Component {
         this.state = {
             pokemons: [],
             searchfield: '',
+            isPokemonSelected: true,
         }
     }
 
@@ -29,8 +30,14 @@ class App extends React.Component {
         this.setState({ searchfield: event.target.value })
     }
 
+    handleToggleChange = () => {
+        this.setState((prevState) => ({
+          isPokemonSelected: !prevState.isPokemonSelected,
+        }));
+    };
+
     render(){
-        const { pokemons, searchfield } = this.state;
+        const { pokemons, searchfield, isPokemonSelected  } = this.state;
         const filteredPokemons = pokemons.filter( inputPokemon => {
             return (
                 //search by name
@@ -45,10 +52,33 @@ class App extends React.Component {
         (
             <div className="tc">
             <h1 className="f1">PokéDex</h1>
+            <div className="toggle-container">
+                <p className="pokemonfont">Show by</p>
+                <input
+                    id="toggle-on"
+                    className="toggle toggle-left"
+                    name="toggle"
+                    value="false"
+                    type="radio"
+                    checked={this.state.isPokemonSelected}
+                    onChange={this.handleToggleChange}
+                />
+                <label htmlFor="toggle-on" className="togglebtn">Pokémon</label>
+                <input
+                    id="toggle-off"
+                    className="toggle toggle-right"
+                    name="toggle"
+                    value="true"
+                    type="radio"
+                    checked={!this.state.isPokemonSelected}
+                    onChange={this.handleToggleChange}
+                />
+                <label htmlFor="toggle-off" className="togglebtn">Evolution</label>
+            </div>
             <SearchBox searchChange={this.onSearchChange}/>
             <Scroll>
                 <ErrorBoundary>
-                    <CardList pokemons={filteredPokemons}/>
+                    {isPokemonSelected && <CardList pokemons={filteredPokemons} />}
                 </ErrorBoundary>
             </Scroll>
             </div>  
