@@ -2,6 +2,7 @@ import React from "react";
 import SearchBox from "../components/SearchBox";
 import ToggleSwitch from "../components/ToggleSwitch";
 import FilteredPokemonList from "../components/FilteredPokemons";
+import FilteredEvolutions from "../components/FilteredEvolutions";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundary";
 import './App.css';
@@ -55,7 +56,7 @@ class App extends React.Component {
     };
 
     render(){
-        const { pokemons, searchfield, isPokemonSelected, isEvolutionSelected } = this.state;
+        const { pokemons, evolutionChains, searchfield, isPokemonSelected, isEvolutionSelected } = this.state;
         return !pokemons.length ?
         <h1 className='tc f1'>Loading</h1> :
         (
@@ -65,8 +66,12 @@ class App extends React.Component {
             <SearchBox searchChange={this.onSearchChange}/>
             <Scroll>
                 <ErrorBoundary>
-                    {isPokemonSelected && <FilteredPokemonList pokemons={pokemons} searchfield={searchfield} />}
-                    {isEvolutionSelected && `This page will be show soon`}
+                    {isPokemonSelected && <FilteredPokemonList 
+                        pokemons={pokemons} 
+                        searchfield={searchfield} />}
+                    {isEvolutionSelected && <FilteredEvolutions 
+                        evolutionChains={evolutionChains} 
+                        searchfield={searchfield} />}
                 </ErrorBoundary>
             </Scroll>
             </div>  
