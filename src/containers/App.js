@@ -10,12 +10,15 @@ class App extends React.Component {
         super();
         this.state = {
             pokemons: [],
+            evolutionChains: [],
             searchfield: '',
             isPokemonSelected: true,
+            isEvolutionSelected: false,
         }
     }
 
     async componentDidMount() {
+        // FOR pokemon
         const resp = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
         const data = await resp.json();
         const result = [...data.results];
@@ -23,21 +26,35 @@ class App extends React.Component {
             const arrForID = item.url.split('/');
             item.id = arrForID[arrForID.length-2];
         })
-        this.setState({ pokemons: result})
-    }
+        // console.log(result);
+        this.setState({ pokemons: result})  
+
+        // FOR evolutionChains
+        const responseForEvolutionchains = await fetch('https://pokeapi.co/api/v2/evolution-chain?limit=10000&offset=0'); 
+        const evolutionChainsData = await responseForEvolutionchains.json();
+        const evolutionChains = [...evolutionChainsData.results];
+        evolutionChains.forEach((item) => {
+            const arrForID = item.url.split('/');
+            item.chainId = arrForID[arrForID.length-2];
+        });
+        // console.log(evolutionChains);
+        this.setState({ evolutionChains: evolutionChains});
+        
+    };
 
     onSearchChange = (event) => {
-        this.setState({ searchfield: event.target.value })
-    }
+        this.setState({ searchfield: event.target.value });
+    };
 
     handleToggleChange = () => {
         this.setState((prevState) => ({
           isPokemonSelected: !prevState.isPokemonSelected,
+          isEvolutionSelected: !prevState.isEvolutionSelected,
         }));
     };
 
     render(){
-        const { pokemons, searchfield, isPokemonSelected  } = this.state;
+        const { pokemons, searchfield, isPokemonSelected, isEvolutionSelected } = this.state;
         const filteredPokemons = pokemons.filter( inputPokemon => {
             return (
                 //search by name
@@ -79,6 +96,7 @@ class App extends React.Component {
             <Scroll>
                 <ErrorBoundary>
                     {isPokemonSelected && <CardList pokemons={filteredPokemons} />}
+                    {isEvolutionSelected && `This page will be show soon`}
                 </ErrorBoundary>
             </Scroll>
             </div>  
