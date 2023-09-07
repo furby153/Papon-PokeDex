@@ -33,12 +33,13 @@ class Card extends React.Component {
     };
 
     // Generate the image URL for the given Pokemon ID
-    getImageUrl = (id) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    getImageUrl = (id) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
     render() {
         const { name, url, id } = this.props;
         const { showDetails, imageError } = this.state;
         const widthHeight = 200;
+        const imageUrl = imageError ? pokeball : this.getImageUrl(id);
 
         return (
             <div
@@ -47,7 +48,7 @@ class Card extends React.Component {
             >
                 {/* Render the appropriate image based on imageError */}
                 <img
-                    src={imageError ? pokeball : this.getImageUrl(id)}
+                    src={imageUrl}
                     alt='Sorry! Pic is unavailable for this Pokémon'
                     width={widthHeight}
                     height={widthHeight}
