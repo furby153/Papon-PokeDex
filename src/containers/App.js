@@ -12,7 +12,7 @@ class App extends React.Component {
         super();
         this.state = {
             pokemons: [],
-            evolutionChains: [],
+            // evolutionChains: [],
             searchfield: '',
             isPokemonSelected: true,
             isEvolutionSelected: false,
@@ -31,16 +31,16 @@ class App extends React.Component {
         // console.log(result);
         this.setState({ pokemons: result})  
 
-        // FOR evolutionChains
-        const responseForEvolutionchains = await fetch('https://pokeapi.co/api/v2/evolution-chain?limit=10000&offset=0'); 
-        const evolutionChainsData = await responseForEvolutionchains.json();
-        const evolutionChains = [...evolutionChainsData.results];
-        evolutionChains.forEach((item) => {
-            const arrForID = item.url.split('/');
-            item.chainId = arrForID[arrForID.length-2];
-        });
-        // console.log(evolutionChains);
-        this.setState({ evolutionChains: evolutionChains});
+        // // FOR evolutionChains
+        // const responseForEvolutionchains = await fetch('https://pokeapi.co/api/v2/evolution-chain?limit=10000&offset=0'); 
+        // const evolutionChainsData = await responseForEvolutionchains.json();
+        // const evolutionChains = [...evolutionChainsData.results];
+        // evolutionChains.forEach((item) => {
+        //     const arrForID = item.url.split('/');
+        //     item.chainId = arrForID[arrForID.length-2];
+        // });
+        // // console.log(evolutionChains);
+        // this.setState({ evolutionChains: evolutionChains});
         
     };
 
@@ -56,7 +56,13 @@ class App extends React.Component {
     };
 
     render(){
-        const { pokemons, evolutionChains, searchfield, isPokemonSelected, isEvolutionSelected } = this.state;
+        const { pokemons, 
+                // evolutionChains, 
+                searchfield, 
+                isPokemonSelected, 
+                isEvolutionSelected 
+        } = this.state;
+        
         return !pokemons.length ?
         <h1 className='tc f1'>Loading</h1> :
         (
@@ -70,7 +76,7 @@ class App extends React.Component {
                         pokemons={pokemons} 
                         searchfield={searchfield} />}
                     {isEvolutionSelected && <FilteredEvolutions 
-                        evolutionChains={evolutionChains} 
+                        // evolutionChains={evolutionChains} 
                         searchfield={searchfield} />}
                 </ErrorBoundary>
             </Scroll>
