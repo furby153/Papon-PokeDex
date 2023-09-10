@@ -8,8 +8,12 @@ const FilteredEvolutions = ({ searchfield }) => {
         const filteredChains = [];
         evolutionDetails.forEach(chain => {
             const matchingPokemon = chain.pokemon.find(pokemon => (
-                pokemon.name.toLowerCase().includes(input.toLowerCase()) ||
-                pokemon.id.toString().toLowerCase().includes(input.toLowerCase()) 
+                //search by name
+                pokemon.name.toLowerCase().includes(input.toLowerCase()) 
+                //search by exact id
+                || pokemon.id.toString().toLowerCase() === input.toLowerCase()
+                //search by id
+                // || pokemon.id.toString().toLowerCase().includes(input.toLowerCase()) 
             ))
             if (matchingPokemon) {
                 filteredChains.push({
