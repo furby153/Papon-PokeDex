@@ -1,7 +1,7 @@
 import React from "react";
 import './Card.css';
 import Details from "./Details";
-import pokeball from "../images/pokeball.png";
+import pokeball from "../../images/pokeball.png";
 
 class Card extends React.Component {
     constructor(props) {

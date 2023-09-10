@@ -1,8 +1,8 @@
 import React from "react";
 import SearchBox from "../components/SearchBox";
 import ToggleSwitch from "../components/ToggleSwitch";
-import FilteredPokemonList from "../components/FilteredPokemons";
-import FilteredEvolutions from "../components/FilteredEvolutions";
+import FilteredPokemonList from "../components/showByPokemon/FilteredPokemonsList";
+import FilteredEvolutions from "../components/showByEvolutionChain/FilteredEvolutions";
 import Scroll from "../components/Scroll";
 import ErrorBoundary from "../components/ErrorBoundary";
 import './App.css';
