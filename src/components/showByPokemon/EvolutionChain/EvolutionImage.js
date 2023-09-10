@@ -1,5 +1,5 @@
 import React from "react";
-import pokeball from "../../images/pokeball.png"
+import pokeball from "../../../images/pokeball.png"
 
 class EvolutionImage extends React.Component {
     constructor(props) {
