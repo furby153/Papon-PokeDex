@@ -12,7 +12,6 @@ class App extends React.Component {
         super();
         this.state = {
             pokemons: [],
-            // evolutionChains: [],
             searchfield: '',
             isPokemonSelected: true,
             isEvolutionSelected: false,
@@ -20,7 +19,7 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
-        // FOR pokemon
+
         const resp = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
         const data = await resp.json();
         const result = [...data.results];
@@ -28,20 +27,8 @@ class App extends React.Component {
             const arrForID = item.url.split('/');
             item.id = arrForID[arrForID.length-2];
         })
-        // console.log(result);
         this.setState({ pokemons: result})  
-
-        // // FOR evolutionChains
-        // const responseForEvolutionchains = await fetch('https://pokeapi.co/api/v2/evolution-chain?limit=10000&offset=0'); 
-        // const evolutionChainsData = await responseForEvolutionchains.json();
-        // const evolutionChains = [...evolutionChainsData.results];
-        // evolutionChains.forEach((item) => {
-        //     const arrForID = item.url.split('/');
-        //     item.chainId = arrForID[arrForID.length-2];
-        // });
-        // // console.log(evolutionChains);
-        // this.setState({ evolutionChains: evolutionChains});
-        
+     
     };
 
     onSearchChange = (event) => {
@@ -57,7 +44,6 @@ class App extends React.Component {
 
     render(){
         const { pokemons, 
-                // evolutionChains, 
                 searchfield, 
                 isPokemonSelected, 
                 isEvolutionSelected 
@@ -76,7 +62,6 @@ class App extends React.Component {
                         pokemons={pokemons} 
                         searchfield={searchfield} />}
                     {isEvolutionSelected && <FilteredEvolutions 
-                        // evolutionChains={evolutionChains} 
                         searchfield={searchfield} />}
                 </ErrorBoundary>
             </Scroll>

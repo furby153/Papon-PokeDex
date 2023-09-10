@@ -2,11 +2,7 @@ import React from "react";
 import evolutionDetails from "./evolutionDetails";
 import CardEvolution from "./CardEvolution"
 
-const FilteredEvolutions = ({ 
-                            // evolutionChains, 
-                            searchfield }) => {
-
-
+const FilteredEvolutions = ({ searchfield }) => {
 
     const filterData = (input) => {
         const filteredChains = [];
@@ -16,7 +12,10 @@ const FilteredEvolutions = ({
                 pokemon.id.toString().toLowerCase().includes(input.toLowerCase()) 
             ))
             if (matchingPokemon) {
-                filteredChains.push(chain.chainId);
+                filteredChains.push({
+                    chainId: chain.chainId,
+                    url: chain.url,
+                });
             }
         })
         console.log(filteredChains);
@@ -25,22 +24,21 @@ const FilteredEvolutions = ({
 
     const filteredChainsResult = filterData(searchfield);
 
-    return filteredChainsResult;
-    // return (
-    //     <div>
-    //         {
-    //             filteredChainsResult.map((user, i) => {
-    //                 return (
-    //                     <CardEvolution 
-    //                         key={filteredChainsResult[i].chainId} 
-    //                         url={filteredChainsResult[i].url}
-    //                         evolutionChains={filteredChainsResult[i].chainId} 
-    //                     />                        
-    //                 );
-    //             })
-    //         }
-    //     </div>
-    // );
+    return (
+        <div>
+            {
+                filteredChainsResult.map((chain, i) => {
+                    return (
+                        <CardEvolution  
+                            key={chain.chainId}
+                            url={chain.url}
+                            chainId={chain.chainId}
+                        />                        
+                    );
+                })
+            }
+        </div>
+    );
 }
 
 export default FilteredEvolutions;
