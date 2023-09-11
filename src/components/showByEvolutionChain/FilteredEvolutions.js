@@ -19,6 +19,7 @@ const FilteredEvolutions = ({ searchfield }) => {
                 filteredChains.push({
                     chainId: chain.chainId,
                     url: chain.url,
+                    pokemons: chain.pokemon,
                 });
             }
         })
@@ -37,6 +38,7 @@ const FilteredEvolutions = ({ searchfield }) => {
                             key={chain.chainId}
                             url={chain.url}
                             chainId={chain.chainId}
+                            pokemons= {chain.pokemons}
                         />                        
                     );
                 })

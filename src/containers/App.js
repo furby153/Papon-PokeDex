@@ -13,8 +13,8 @@ class App extends React.Component {
         this.state = {
             pokemons: [],
             searchfield: '',
-            isPokemonSelected: true,
-            isEvolutionSelected: false,
+            isPokemonSelected: false,
+            isEvolutionSelected: true,
         }
     }
 
