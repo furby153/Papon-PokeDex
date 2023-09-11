@@ -6,13 +6,17 @@ class CardEvolution extends React.Component {
     constructor() {
         super();
         this.state = {
-            imageError: false,
+            imageErrors: [],
         }
     }
 
-    // Handle image loading error by showing the alternate image
-    handleImageError = () => {
-        this.setState({ imageError: true });
+    // Handle image loading error for a specific Pokemon
+    handleImageError = (index) => {
+        this.setState((prevState) => {
+            const newImageErrors = [...prevState.imageErrors];
+            newImageErrors[index] = true;
+            return { imageErrors: newImageErrors };
+        });
     };
 
     // Generate the image URL for the given Pokemon ID
@@ -20,7 +24,7 @@ class CardEvolution extends React.Component {
 
     render() {
         const { url, chainId, pokemons } = this.props;
-        const { imageError } = this.state;
+        const { imageErrors } = this.state;
         const widthHeight = 200;
 
         return (
@@ -30,24 +34,25 @@ class CardEvolution extends React.Component {
                 <p>Hello ,${chainId}, url is ${url} </p>
                 {/* show pictures */}
                 <div className="pokemon-card-by-evolution-container">
-                    {pokemons.map((pokemon) => (
+                    {pokemons.map((pokemon, index) => (
                         <div key={pokemon.id} className="pokemon-card">
-                            {imageError ? (
+                            
+                            {imageErrors[index] ? (
                                 <img
                                     src={pokeball}
                                     alt="Sorry! Pic is unavailable for this Pokémon"
                                     width={widthHeight}
                                     height={widthHeight}
                                 />
-                            ) : (
+                            ) : 
                                 <img
-                                src={this.getImageUrl(pokemon.id)}
-                                alt={pokemon.name}
-                                onError={this.handleImageError}
-                                width={widthHeight}
-                                height={widthHeight}
+                                    src={this.getImageUrl(pokemon.id)}
+                                    alt={pokemon.name}
+                                    onError={() => this.handleImageError(index)}
+                                    width={widthHeight}
+                                    height={widthHeight}
                                 />
-                            )}
+                            }
                             <h2>{pokemon.name}</h2>
                             <h5>PokéID: {pokemon.id}</h5>
                         </div>
