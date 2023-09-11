@@ -32,19 +32,20 @@ class CardEvolution extends React.Component {
                 <div className="pokemon-card-by-evolution-container">
                     {pokemons.map((pokemon) => (
                         <div key={pokemon.id} className="pokemon-card">
-                            <img
+                            {imageError ? (
+                                <img
+                                    src={pokeball}
+                                    alt="Sorry! Pic is unavailable for this Pokémon"
+                                    width={widthHeight}
+                                    height={widthHeight}
+                                />
+                            ) : (
+                                <img
                                 src={this.getImageUrl(pokemon.id)}
                                 alt={pokemon.name}
                                 onError={this.handleImageError}
                                 width={widthHeight}
                                 height={widthHeight}
-                            />
-                            {imageError && (
-                                <img
-                                    src={pokeball}
-                                    alt="Error loading pic"
-                                    width={widthHeight}
-                                    height={widthHeight}
                                 />
                             )}
                             <h2>{pokemon.name}</h2>
