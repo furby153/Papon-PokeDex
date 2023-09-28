@@ -1,5 +1,6 @@
 import React from "react";
 import pokeball from "../../images/pokeball.png";
+import ChangIdToUseWithDetails from "./ChangIdToUseWithDetails";
 import './CardEvolution.css';
 
 class CardEvolution extends React.Component {
@@ -71,9 +72,7 @@ class CardEvolution extends React.Component {
                             }
                             <h2>{pokemon.name}</h2>
                             <h5>PokéID: {pokemon.id}</h5>
-                            {showDetails && 
-                            <p>{pokemon.url}</p>
-                            }
+                            {showDetails && <ChangIdToUseWithDetails id={pokemon.id}/>}
                         </div>
                     ))}
                 </div>

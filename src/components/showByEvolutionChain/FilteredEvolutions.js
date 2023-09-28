@@ -23,7 +23,7 @@ const FilteredEvolutions = ({ searchfield }) => {
                 });
             }
         })
-        console.log(filteredChains);
+        // console.log(filteredChains);
         return filteredChains;
     }
 
