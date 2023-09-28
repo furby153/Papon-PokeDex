@@ -1,6 +1,7 @@
 import React from "react";
 import pokeball from "../../images/pokeball.png";
 import ChangeIdToUseWithDetails from "./ChangeIdToUseWithDetails";
+import ShowEvolutions from "./ShowEvolutions";
 import './CardEvolution.css';
 
 class CardEvolution extends React.Component {
@@ -8,7 +9,6 @@ class CardEvolution extends React.Component {
         super();
         this.state = {
             showDetails: false,
-            showEvolutions: false,
             imageErrors: [],
         }
     }
@@ -28,12 +28,6 @@ class CardEvolution extends React.Component {
         }));
     };
 
-    handleShowEvolutionsClick = () => {
-        this.setState((prevState) => ({
-            showEvolutions: !prevState.showDetails,
-        }));
-    };
-
     // Handle image loading error for a specific Pokemon
     handleImageError = (index) => {
         this.setState((prevState) => {
@@ -47,9 +41,9 @@ class CardEvolution extends React.Component {
     getImageUrl = (id) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
     render() {
-        // const { url, chainId } = this.props;
-        const { pokemons } = this.props;
-        const { imageErrors, showDetails, showEvolutions } = this.state;
+        // const { url, chainId, pokemons } = this.props;
+        const { url, pokemons } = this.props;
+        const { imageErrors, showDetails } = this.state;
         const widthHeight = 200;
 
         return (
@@ -87,23 +81,22 @@ class CardEvolution extends React.Component {
                     ))}
                 </div>
             
-                {showDetails &&
-                    <div>
-                        <p>Show evolution</p>
-                    </div>
-                }  
+                {showDetails && (<ShowEvolutions url={url}/>)}  
 
-                {showDetails ? (
-                    <button 
-                        className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
-                        onClick={this.handleShowDetailsClick}
-                    >
-                        Hide details
-                    </button>
-                ) : (
-                    <p>Click to show details</p>
-                )
-                }
+                <div className="pa3">
+                    {showDetails ? (
+                        <button 
+                            className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
+                            onClick={this.handleShowDetailsClick}
+                        >
+                            Hide details
+                        </button>
+                    ) : (
+                        <p>Click to show details</p>
+                    )
+                    }
+                </div>
+
             </div>
         );
     }
