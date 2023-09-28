@@ -62,13 +62,13 @@ class Card extends React.Component {
                     {/* Conditional rendering for the "Show Details" button and Details component */}
                     {showDetails ? (
                         <>
+                            <Details url={url} />
                             <button
                                 className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
                                 onClick={this.handleShowDetailsClick}
                             >
                                 Hide Details
                             </button>
-                            <Details url={url} />
                         </>
                     ) : (
                         <p>Click to show details</p>
