@@ -4,7 +4,7 @@ const ChangIdToUseWithDetails = ({id}) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     return (
         <div>
-            <Details url = {url}
+            <Details url = {url} isByChain='true'
         />
         </div>
     )

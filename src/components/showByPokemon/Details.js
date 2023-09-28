@@ -23,6 +23,7 @@ class Details extends Component {
     showHeightAndWeight: false,
     showStats: false,
     showEvolutionChain: false,
+    isByChain: null,
   };
 
   async componentDidMount() {
@@ -30,6 +31,16 @@ class Details extends Component {
       const response = await fetch(this.props.url);
       const data = await response.json();
       this.setState({ details: data });
+
+      if (this.props.isByChain === 'true') {
+        this.setState({ 
+                        isByChain: true,
+                        showHeightAndWeight: true,
+                        showStats: true,
+                      });
+      } else if (this.props.isByChain === 'false'){
+        this.setState({ isByChain: false });
+      }
     } catch (error) {
       console.log('Error fetching details:', error);
     }
@@ -42,7 +53,7 @@ class Details extends Component {
   };
 
   render() {
-    const { details, showStats, showEvolutionChain, showHeightAndWeight } = this.state;
+    const { details, showStats, showEvolutionChain, showHeightAndWeight, isByChain } = this.state;
 
     if (!details) {
       return <LoadingMessage />;
@@ -70,15 +81,17 @@ class Details extends Component {
             <Stats stats={details.stats} />
           }
         />
-
-        <ShowHideSection
+        
+        { !isByChain &&
+          <ShowHideSection
           buttonText="Evolution Chain"
           isShown={showEvolutionChain}
           onClick={() => this.toggleSection('showEvolutionChain')}
           children={
             <EvolutionChain speciesURL={details.species.url} />
           }
-        />
+          />
+        }
 
         {/* Add more details as needed */}
       </div>

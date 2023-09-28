@@ -40,7 +40,8 @@ class CardEvolution extends React.Component {
     getImageUrl = (id) => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
     render() {
-        const { url, chainId, pokemons } = this.props;
+        // const { url, chainId } = this.props;
+        const { pokemons } = this.props;
         const { imageErrors, showDetails } = this.state;
         const widthHeight = 200;
 
@@ -49,7 +50,7 @@ class CardEvolution extends React.Component {
                 className={`tc bg-light-green dib br3 pa3 ma2 ${showDetails ? '' : 'grow'} ${showDetails ? '' : 'onCardHover'} bw2 shadow-5 w-90`}
                 onClick={this.handleClick}
             >
-                <p>Hello ,{chainId}, url is {url} </p>
+                {/* <p>Hello ,{chainId}, url is {url} </p> */}
                 {/* show pictures */}
                 <div className="pokemon-card-by-evolution-container">
                     {pokemons.map((pokemon, index) => (
