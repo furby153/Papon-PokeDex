@@ -8,6 +8,7 @@ class CardEvolution extends React.Component {
         super();
         this.state = {
             showDetails: false,
+            showEvolutions: false,
             imageErrors: [],
         }
     }
@@ -27,6 +28,12 @@ class CardEvolution extends React.Component {
         }));
     };
 
+    handleShowEvolutionsClick = () => {
+        this.setState((prevState) => ({
+            showEvolutions: !prevState.showDetails,
+        }));
+    };
+
     // Handle image loading error for a specific Pokemon
     handleImageError = (index) => {
         this.setState((prevState) => {
@@ -42,7 +49,7 @@ class CardEvolution extends React.Component {
     render() {
         // const { url, chainId } = this.props;
         const { pokemons } = this.props;
-        const { imageErrors, showDetails } = this.state;
+        const { imageErrors, showDetails, showEvolutions } = this.state;
         const widthHeight = 200;
 
         return (
@@ -73,10 +80,19 @@ class CardEvolution extends React.Component {
                             }
                             <h2>{pokemon.name}</h2>
                             <h5>PokéID: {pokemon.id}</h5>
-                            {showDetails && <ChangIdToUseWithDetails id={pokemon.id}/>}
+                            {showDetails && 
+                                <ChangIdToUseWithDetails id={pokemon.id}
+                            />}
                         </div>
                     ))}
                 </div>
+            
+                {showDetails &&
+                    <div>
+                        <p>Show evolution</p>
+                    </div>
+                }  
+
                 {showDetails ? (
                     <button 
                         className={`showDetailsButton ${showDetails ? "redHover" : "greenHover"}`}
