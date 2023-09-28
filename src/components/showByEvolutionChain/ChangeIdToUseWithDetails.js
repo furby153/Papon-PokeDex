@@ -1,6 +1,6 @@
 import Details from "../showByPokemon/Details";
 
-const ChangIdToUseWithDetails = ({id}) => {
+const ChangeIdToUseWithDetails = ({id}) => {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     return (
         <div>
@@ -10,4 +10,4 @@ const ChangIdToUseWithDetails = ({id}) => {
     )
 }
 
-export default ChangIdToUseWithDetails;
+export default ChangeIdToUseWithDetails;
