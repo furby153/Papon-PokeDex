@@ -92,7 +92,7 @@ class Details extends Component {
           }
           />
         }
-
+        
         {/* Add more details as needed */}
       </div>
     );

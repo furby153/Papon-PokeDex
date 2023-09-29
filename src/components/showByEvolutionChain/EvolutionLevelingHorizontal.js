@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { styled } from '@mui/system';
-import { KeyboardDoubleArrowDown } from '@mui/icons-material';
+import { KeyboardDoubleArrowRight } from '@mui/icons-material';
 
-class EvolutionLeveling extends Component {
+class EvolutionLevelingHorizontal extends Component {
 
   render() {
     const { leveling } = this.props;
@@ -13,9 +13,8 @@ class EvolutionLeveling extends Component {
 
     const evolutionType = leveling.trigger.name;
     let evolutionMethodDetails;
-    const ArrowDownIcon = styled(KeyboardDoubleArrowDown)`
-      /* Add any custom styling here */
-    `;
+
+    const ArrowRightIcon = styled(KeyboardDoubleArrowRight)``;
 
     if (evolutionType === 'level-up') {
       const { min_level, min_happiness } = leveling;
@@ -54,13 +53,12 @@ class EvolutionLeveling extends Component {
 
     return (
       <div>
-        <h5>Evolution method:</h5>
         <p className='evolutionCondition'>{evolutionType.charAt(0).toUpperCase() + evolutionType.slice(1)}</p>
+        <ArrowRightIcon/>
         {evolutionMethodDetails}
-        <ArrowDownIcon/>
       </div>
     );
   }
 }
 
-export default EvolutionLeveling;
+export default EvolutionLevelingHorizontal;

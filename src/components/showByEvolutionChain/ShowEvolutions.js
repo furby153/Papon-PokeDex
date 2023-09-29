@@ -1,10 +1,12 @@
 import React from "react";
+import ShowEvolutionsDetails from "./ShowEvolutionsDetails";
 
 class ShowEvolutions extends React.Component {
     constructor(){
         super();
         this.state ={
             showEvolutions: true,
+            evolutionChain: null,
         }
     }
 
@@ -14,15 +16,31 @@ class ShowEvolutions extends React.Component {
         }));
     };
 
+    async componentDidMount() {
+        // Fetch data from the URL
+        try {
+          const response = await fetch(this.props.url);
+          const evoChain = await response.json();
+          this.setState({ evolutionChain: evoChain });
+        } catch(error) {
+            console.log('Error fetching details:', error);
+        }
+      }
+
     render() {
-        const { url } = this.props;
-        const { showEvolutions } = this.state;
+        const { showEvolutions, evolutionChain } = this.state;
+
+        if (!evolutionChain) {
+            return <div className='tc ba b--blue br3 ph3 bg-lightest-blue stats'>Loading...</div>;
+        }
 
         return(
             <div>
                 {showEvolutions ? (
                     <>
-                        <p>{url}</p>
+                        <ShowEvolutionsDetails 
+                            evolution={evolutionChain.chain}
+                        />
                     </>
                 ) : (
                     <>

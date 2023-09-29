@@ -81,7 +81,7 @@ class CardEvolution extends React.Component {
                     ))}
                 </div>
             
-                {showDetails && (<ShowEvolutions url={url}/>)}  
+                {showDetails && <ShowEvolutions url={url}/>}  
 
                 <div className="pa3">
                     {showDetails ? (
