@@ -13,3 +13,11 @@
 .onCardHover:hover {
     cursor: pointer;
 }
+
+.evoluton-details-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center text content */
+}

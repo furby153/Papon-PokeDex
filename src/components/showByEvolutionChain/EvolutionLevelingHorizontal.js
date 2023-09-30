@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
-import { styled } from '@mui/system';
-import { KeyboardDoubleArrowRight } from '@mui/icons-material';
+import { KeyboardDoubleArrowDown, KeyboardDoubleArrowRight } from '@mui/icons-material';
 
 class EvolutionLevelingHorizontal extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobile: window.innerWidth < 809,
+    };
+
+    // Add an event listener to update screenWidth when the window is resized
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  // Event handler for window resize
+  handleResize = () => {
+    this.setState({ isMobile: window.innerWidth < 809});
+  };
+
+  // Don't forget to remove the event listener when the component unmounts
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   render() {
     const { leveling } = this.props;
+    const { isMobile } = this.state;
 
     if (!leveling) {
       return null;
@@ -14,7 +34,7 @@ class EvolutionLevelingHorizontal extends Component {
     const evolutionType = leveling.trigger.name;
     let evolutionMethodDetails;
 
-    const ArrowRightIcon = styled(KeyboardDoubleArrowRight)``;
+    const iconToRender = isMobile ? <KeyboardDoubleArrowDown /> : <KeyboardDoubleArrowRight />;
 
     if (evolutionType === 'level-up') {
       const { min_level, min_happiness } = leveling;
@@ -54,8 +74,9 @@ class EvolutionLevelingHorizontal extends Component {
     return (
       <div>
         <p className='evolutionCondition'>{evolutionType.charAt(0).toUpperCase() + evolutionType.slice(1)}</p>
-        <ArrowRightIcon/>
+        {!isMobile && iconToRender}
         {evolutionMethodDetails}
+        {isMobile && iconToRender}
       </div>
     );
   }

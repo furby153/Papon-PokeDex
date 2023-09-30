@@ -10,7 +10,21 @@ class CardEvolution extends React.Component {
         this.state = {
             showDetails: false,
             imageErrors: [],
+            isMobile: window.innerWidth < 809,
         }
+
+        // Add an event listener to update screenWidth when the window is resized
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    // Event handler for window resize
+    handleResize = () => {
+        this.setState({ isMobile: window.innerWidth < 809});
+    };
+
+    // Don't forget to remove the event listener when the component unmounts
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
     }
 
     // Toggle the showDetails state on card click
@@ -43,8 +57,11 @@ class CardEvolution extends React.Component {
     render() {
         // const { url, chainId, pokemons } = this.props;
         const { url, pokemons } = this.props;
-        const { imageErrors, showDetails } = this.state;
+        const { imageErrors, showDetails , isMobile } = this.state;
         const widthHeight = 200;
+        const containerClassName = isMobile
+        ? "evolution-details-vertical"
+        : "pokemon-card-by-evolution-container";
 
         return (
             <div
@@ -53,7 +70,7 @@ class CardEvolution extends React.Component {
             >
                 {/* <p>Hello ,{chainId}, url is {url} </p> */}
                 {/* show pictures */}
-                <div className="pokemon-card-by-evolution-container">
+                <div className={containerClassName}>
                     {pokemons.map((pokemon, index) => (
                         <div key={pokemon.id} className="pokemon-card">
                             {imageErrors[index] ? (
