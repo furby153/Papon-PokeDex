@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
-import { styled } from '@mui/system';
-import { KeyboardDoubleArrowDown } from '@mui/icons-material';
+import { KeyboardDoubleArrowDown, KeyboardDoubleArrowRight } from '@mui/icons-material';
 
 class EvolutionLeveling extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobile: window.innerWidth < 809,
+      isByChain: this.props.type !== 'byPokemon',
+    };
+
+    // Add an event listener to update screenWidth when the window is resized
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  // Event handler for window resize
+  handleResize = () => {
+    this.setState({ isMobile: window.innerWidth < 809});
+  };
+
+  // Don't forget to remove the event listener when the component unmounts
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   render() {
     const { leveling } = this.props;
+    const { isMobile, isByChain } = this.state;
 
     if (!leveling) {
       return null;
@@ -13,9 +34,8 @@ class EvolutionLeveling extends Component {
 
     const evolutionType = leveling.trigger.name;
     let evolutionMethodDetails;
-    const ArrowDownIcon = styled(KeyboardDoubleArrowDown)`
-      /* Add any custom styling here */
-    `;
+
+    const iconToRender = isMobile ? <KeyboardDoubleArrowDown /> : <KeyboardDoubleArrowRight />;
 
     if (evolutionType === 'level-up') {
       const { min_level, min_happiness } = leveling;
@@ -54,10 +74,14 @@ class EvolutionLeveling extends Component {
 
     return (
       <div>
-        <h5>Evolution method:</h5>
+        {!isByChain && (<h5>Evolution method:</h5>)}
         <p className='evolutionCondition'>{evolutionType.charAt(0).toUpperCase() + evolutionType.slice(1)}</p>
+        {!isMobile && isByChain && iconToRender}
         {evolutionMethodDetails}
-        <ArrowDownIcon/>
+        <div>
+          {isMobile && isByChain && iconToRender}
+          {!isByChain && <KeyboardDoubleArrowDown />}
+        </div>
       </div>
     );
   }

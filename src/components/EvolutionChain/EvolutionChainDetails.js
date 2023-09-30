@@ -15,6 +15,7 @@ function EvolutionChainDetails({ evolution }) {
     <div>
       <EvolutionLeveling 
         leveling={evolution.evolution_details[0]}
+        type='byPokemon'
       />
       <EvolutionImage 
         id={pokeID}

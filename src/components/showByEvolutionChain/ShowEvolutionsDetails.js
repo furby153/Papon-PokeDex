@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import EvolutionLevelingHorizontal from "./EvolutionLevelingHorizontal";
-import EvolutionImage from "../showByPokemon/EvolutionChain/EvolutionImage";
+import EvolutionLeveling from "../EvolutionChain/EvolutionLeveling";
+import EvolutionImage from "../EvolutionChain/EvolutionImage";
 
 function ShowEvolutionsDetails({ evolution }) {
 
@@ -38,8 +38,9 @@ function ShowEvolutionsDetails({ evolution }) {
 
     return (
         <div className={containerClassName}>
-            <EvolutionLevelingHorizontal 
+            <EvolutionLeveling 
                 leveling={evolution.evolution_details[0]}
+                type='byChain'
             />
             <EvolutionImage
                 id={pokeID}

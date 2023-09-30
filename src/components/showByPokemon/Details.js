@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stats from './Stats';
-import EvolutionChain from './EvolutionChain/EvolutionChain';
+import EvolutionChain from '../EvolutionChain/EvolutionChain';
 import './Details.css';
 
 const LoadingMessage = () => <div>Loading...</div>;
